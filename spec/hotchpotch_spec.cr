@@ -14,4 +14,10 @@ describe Hotchpotch do
     true.should eq(Registry.get("a") == 1)
     true.should eq(Registry.get(1) == "b")
   end
+
+  it "weighted_sample" do
+    items = [{"a", 1}, {"b", 29}, {"c", 70}]
+    result = {"a" => 0, "b" => 0, "c" => 0}
+    1000.times { result[Random.sample(items)] += 1 }
+  end
 end
